@@ -17,7 +17,7 @@ const LoginButton = () => {
         duration: 0.03,
         type: "spring",
       }}
-      className="bg-brand rounded-lg text-background-primary cursor-pointer transition-all text-sm shadow-md px-5 py-2 shadow-blue-300 hover:opacity-80"
+      className="bg-brand rounded-lg text-background-primary cursor-pointer transition-all text-sm shadow-md px-4 py-2 shadow-blue-300 hover:opacity-80"
     >
       Login
     </motion.button>

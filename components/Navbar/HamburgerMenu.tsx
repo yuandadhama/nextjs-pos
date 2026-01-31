@@ -1,10 +1,18 @@
+import { motion } from "motion/react";
 import Image from "next/image";
 
-const HamburgerMenu = () => {
+type props = {
+  clickingMenuHandle: () => void;
+};
+
+const HamburgerMenu = ({ clickingMenuHandle }: props) => {
   return (
-    <button className="cursor-pointer">
+    <motion.button
+      className="cursor-pointer md:hidden"
+      onClick={clickingMenuHandle}
+    >
       <Image width={25} height={25} src="/navbar.png" alt="Navigation Bar" />
-    </button>
+    </motion.button>
   );
 };
 

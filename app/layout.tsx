@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lexend.className} antialiased`}>
+      <body className={`${lexend.className} antialiased `}>
         <Navbar />
         {children}
       </body>

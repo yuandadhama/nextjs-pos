@@ -1,39 +1,69 @@
+"use client";
+
 import Image from "next/image";
 import LoginButton from "./LoginButton";
 import HamburgerMenu from "./HamburgerMenu";
+import { useEffect, useState } from "react";
+import Menu from "./Menu";
+import { AnimatePresence } from "motion/react";
+import {
+  Cog6ToothIcon,
+  GlobeAltIcon,
+  HomeIcon,
+} from "@heroicons/react/16/solid";
 
-const MenuItems = [];
+const menus = [
+  { title: "home", href: "#home", icon: <HomeIcon width={20} /> },
+  { title: "features", href: "#features", icon: <Cog6ToothIcon width={20} /> },
+  { title: "about", href: "#about", icon: <GlobeAltIcon width={20} /> },
+];
+
 const Navbar = () => {
+  const [openMenuNav, setOpenMenuNav] = useState(false);
+
+  const clickingMenuHandle = () => {
+    setOpenMenuNav((prevState) => !prevState);
+    console.log(openMenuNav);
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleResize = () => setOpenMenuNav(false);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
-    <nav className="w-full bg-background-primary flex py-3 px-4 justify-between fixed shadow">
-      {/* logo image and brand  */}
-      <div className="flex items-center gap-3">
-        <Image width={30} height={30} src="/logo.png" alt="Smart POS Logo" />
-        <div className="text-md font-medium">SmartPOS</div>
-      </div>
-
-      {/* login button and navbar  */}
-      <div className="flex items-center gap-5">
-        <LoginButton />
-        <HamburgerMenu />
-      </div>
-
-      {/* <div className=" absolute top-0 right-0 opacity-55 w-60 h-screen bg-amber-400">
-        close navigation button 
-        <div className="mt-5 float-end mr-4.5">
-          <Image
-            width={20}
-            height={20}
-            src="/close.png"
-            alt="Close Navigation"
-          />
+    <header className="bg-background-primary w-full fixed shadow z-50 flex justify-center">
+      <nav className="container max-w-5xl flex py-3 px-4 justify-between">
+        {/* logo image and brand  */}
+        <div className="flex items-center gap-3">
+          <Image width={30} height={30} src="/logo.png" alt="Smart POS Logo" />
+          <div className="text-md font-medium">SmartPOS</div>
         </div>
 
-        <ul>
-          <li></li>
+        <ul className="hidden md:flex gap-[10%] items-center w-lg justify-center">
+          {menus.map(({ title, href, icon }) => (
+            <li key={title} className="flex gap-1">
+              <a href={href} className="link-navigation">
+                <span>{icon}</span>
+                <span>{title}</span>
+              </a>
+            </li>
+          ))}
         </ul>
-      </div> */}
-    </nav>
+
+        {/* login button and navbar  */}
+        <div className="flex items-center gap-5">
+          <LoginButton />
+          <HamburgerMenu clickingMenuHandle={clickingMenuHandle} />
+        </div>
+        <AnimatePresence>
+          {openMenuNav && <Menu clickingMenuHandle={clickingMenuHandle} />}
+        </AnimatePresence>
+      </nav>
+    </header>
   );
 };
 

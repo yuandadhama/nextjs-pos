@@ -39,3 +39,7 @@
 @utility flex-center {
   @apply flex items-center justify-center;
 }
+
+.link-navigation {
+  @apply capitalize cursor-pointer font-light transition-all flex gap-1 hover:opacity-50;
+}
