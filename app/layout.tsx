@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lexend, Geist_Mono } from "next/font/google";
+import { Lexend } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 

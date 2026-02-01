@@ -11,7 +11,12 @@ const HamburgerMenu = ({ clickingMenuHandle }: props) => {
       className="cursor-pointer md:hidden"
       onClick={clickingMenuHandle}
     >
-      <Image width={25} height={25} src="/navbar.png" alt="Navigation Bar" />
+      <Image
+        width={25}
+        height={25}
+        src={"/header/hamburger.png"}
+        alt="Navigation Bar"
+      />
     </motion.button>
   );
 };

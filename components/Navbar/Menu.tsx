@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import CloseMenu from "./CloseMenu";
-import { motion, Variant } from "motion/react";
+import { motion } from "motion/react";
 import {
   ArrowRightCircleIcon,
   Cog6ToothIcon,
