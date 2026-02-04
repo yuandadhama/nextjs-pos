@@ -40,6 +40,31 @@
   @apply flex items-center justify-center;
 }
 
+/* navbar  */
 .link-navigation {
   @apply capitalize cursor-pointer font-light transition-all flex gap-1 hover:opacity-50;
+}
+
+/* journey */
+
+.journey-card {
+  @apply flex items-center gap-2;
+}
+
+.journey-card .dot {
+  @apply rounded-full w-4 h-4 relative;
+}
+
+/* footer  */
+
+.footer-ul {
+  @apply flex flex-col gap-4;
+}
+
+.footer-ul li {
+  @apply text-text-secondary;
+}
+
+.footer-ul h4 {
+  @apply font-bold;
 }
