@@ -50,6 +50,11 @@ const Menu = ({ clickingMenuHandle }: props) => {
     };
   });
 
+  const goTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    clickingMenuHandle();
+  };
+
   return (
     <motion.div
       initial={{
@@ -82,16 +87,19 @@ const Menu = ({ clickingMenuHandle }: props) => {
               initial="hidden"
               animate="visible"
             >
-              {menus.map(({ title, href, icon }, index) => (
+              {menus.map(({ title, icon }, index) => (
                 <motion.li
                   variants={item_a}
                   className={`${index == menus.length - 1 ? "border-y" : "border-t"} border-t p-3`}
                   key={title}
                 >
-                  <motion.a href={href} className="link-navigation ">
+                  <motion.button
+                    className="link-navigation"
+                    onClick={() => goTo(title)}
+                  >
                     <span className="">{icon}</span>
                     <span className="">{title}</span>
-                  </motion.a>
+                  </motion.button>
                 </motion.li>
               ))}
             </motion.ul>

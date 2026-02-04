@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/HomePage/Footer";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -21,12 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${lexend.className} antialiased `}>
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+      <body className={`${lexend.className} antialiased `}>{children}</body>
     </html>
   );
 }

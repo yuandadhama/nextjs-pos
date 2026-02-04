@@ -13,9 +13,9 @@ import {
 } from "@heroicons/react/16/solid";
 
 const menus = [
-  { title: "home", href: "#home", icon: <HomeIcon width={20} /> },
-  { title: "features", href: "#features", icon: <Cog6ToothIcon width={20} /> },
-  { title: "about", href: "#about", icon: <GlobeAltIcon width={20} /> },
+  { title: "home", href: "home", icon: <HomeIcon width={20} /> },
+  { title: "features", href: "features", icon: <Cog6ToothIcon width={20} /> },
+  { title: "about", href: "about", icon: <GlobeAltIcon width={20} /> },
 ];
 
 const Navbar = () => {
@@ -23,7 +23,11 @@ const Navbar = () => {
 
   const clickingMenuHandle = () => {
     setOpenMenuNav((prevState) => !prevState);
-    console.log(openMenuNav);
+  };
+
+  const goTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    console.log("go to view id: " + id);
   };
 
   useEffect(() => {
@@ -46,10 +50,10 @@ const Navbar = () => {
         <ul className="hidden md:flex gap-[10%] items-center w-lg justify-center">
           {menus.map(({ title, href, icon }) => (
             <li key={title} className="flex gap-1">
-              <a href={href} className="link-navigation">
+              <div className="link-navigation" onClick={() => goTo(href)}>
                 <span>{icon}</span>
                 <span>{title}</span>
-              </a>
+              </div>
             </li>
           ))}
         </ul>

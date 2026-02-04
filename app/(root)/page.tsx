@@ -42,10 +42,13 @@ const features = [
 
 const page = () => {
   return (
-    <div id="home">
-      <main className="flex justify-center p-6 pt-25 bg-linear-to-b from-background-primary to-gray-100">
+    <>
+      <section
+        className="flex justify-center p-6 pt-25 bg-linear-to-b from-background-primary to-gray-100"
+        id="home"
+      >
         <HeroSection />
-      </main>
+      </section>
 
       <section className="py-10 text-text-secondary flex flex-col justify-center gap-4 w-full">
         <h4 className="text-center tracking-widest">
@@ -108,7 +111,7 @@ const page = () => {
           <Journey />
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
