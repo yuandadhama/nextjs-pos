@@ -43,7 +43,12 @@ const Navbar = () => {
       <nav className="container max-w-5xl flex py-3 px-4 justify-between">
         {/* logo image and brand  */}
         <div className="flex items-center gap-3">
-          <Image width={30} height={30} src="/logo.png" alt="Smart POS Logo" />
+          <Image
+            width={30}
+            height={30}
+            src={"/header/logo.png"}
+            alt="Smart POS Logo"
+          />
           <div className="text-md font-medium">SmartPOS</div>
         </div>
 

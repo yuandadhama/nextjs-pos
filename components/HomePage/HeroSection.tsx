@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -33,9 +34,11 @@ const HeroSection = () => {
         </p>
 
         {/* get started button  */}
-        <button className="bg-brand text-background-primary p-4 w-75 mb-12 rounded-lg shadow-blue-300 shadow-lg cursor-pointer transition-all hover:opacity-80">
-          Get Started
-        </button>
+        <Link href={"/register"}>
+          <button className="bg-brand text-background-primary p-4 w-75 mb-12 rounded-lg shadow-blue-300 shadow-lg cursor-pointer transition-all hover:opacity-80">
+            Get Started
+          </button>
+        </Link>
       </div>
 
       {/* hero image / cashier image */}

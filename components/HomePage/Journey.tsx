@@ -7,7 +7,7 @@ const Journey = () => {
         <div className="journey-card">
           <div className="dot bg-brand">
             {/* line down  */}
-            <div className="w-1 h-25 bg-gray-300 absolute top-5 left-1.5"></div>
+            <div className="w-1 h-26 bg-gray-300 absolute top-4 left-1.5"></div>
           </div>
           <div className="text-sm font-bold text-brand">2021</div>
         </div>
@@ -54,7 +54,7 @@ const Journey = () => {
         <div className="journey-card mt-7">
           <div className="dot bg-text-secondary">
             {/* line down  */}
-            <div className="w-1 h-20 bg-gray-300 absolute top-5 left-1.5"></div>
+            <div className="w-1 h-24 bg-linear-to-b from-gray-300 to-background-primary absolute top-5 left-1.5"></div>
           </div>
           <div className="text-sm font-bold text-text-secondary">2024</div>
         </div>

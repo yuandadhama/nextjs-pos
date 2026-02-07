@@ -31,27 +31,15 @@ const Footer = () => {
             <div className="flex w-[60%] h-50 justify-between">
               <ul className="footer-ul">
                 <h4>Product</h4>
-                <li>
-                  <a href="#home">Features</a>
-                </li>
-                <li>
-                  <a href="#features">Pricing</a>
-                </li>
-                <li>
-                  <a href="#about">About</a>
-                </li>
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>About</li>
               </ul>
               <ul className="footer-ul">
                 <h4>Company</h4>
-                <li>
-                  <a href="#home">About</a>
-                </li>
-                <li>
-                  <a href="#features">Careers</a>
-                </li>
-                <li>
-                  <a href="#about">Privacy</a>
-                </li>
+                <li>Register</li>
+                <li>Login</li>
+                <li>Privacy</li>
               </ul>
             </div>
 
@@ -68,7 +56,7 @@ const Footer = () => {
             <FaAt />
           </div>
           <p className="text-text-secondary text-sm">
-            © 2024 SmartPOS Systems Inc. All Rights reserved.
+            © 2026 SmartPOS Systems Inc. All Rights reserved.
           </p>
         </div>
       </div>

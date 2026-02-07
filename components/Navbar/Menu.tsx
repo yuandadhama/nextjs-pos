@@ -7,6 +7,7 @@ import {
   GlobeAltIcon,
   HomeIcon,
 } from "@heroicons/react/16/solid";
+import Link from "next/link";
 
 type props = {
   clickingMenuHandle: () => void;
@@ -104,10 +105,12 @@ const Menu = ({ clickingMenuHandle }: props) => {
               ))}
             </motion.ul>
           </div>
-          <motion.button className="flex border-brand border bg-brand rounded-full text-white p-2 hover:opacity-70 transition-all ease-in-out cursor-pointer justify-between shadow-blue-300 shadow-lg px-4">
-            <div className="px-2 ">Get Started</div>
-            <ArrowRightCircleIcon width={20} />
-          </motion.button>
+          <Link href={"/register"}>
+            <motion.button className="flex border-brand border bg-brand rounded-full text-white p-2 hover:opacity-70 transition-all ease-in-out cursor-pointer justify-between shadow-blue-300 shadow-lg px-4">
+              <div className="px-2 ">Get Started</div>
+              <ArrowRightCircleIcon width={20} />
+            </motion.button>
+          </Link>
         </div>
       </div>
     </motion.div>

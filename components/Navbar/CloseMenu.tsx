@@ -22,7 +22,12 @@ const CloseMenu = ({ clickingMenuHandle }: props) => {
       className="mt-5 float-end mr-4 cursor-pointer"
       onClick={clickingMenuHandle}
     >
-      <Image width={20} height={20} src="/close.png" alt="Close Navigation" />
+      <Image
+        width={20}
+        height={20}
+        src={"/header/close.png"}
+        alt="Close Navigation"
+      />
     </motion.button>
   );
 };
