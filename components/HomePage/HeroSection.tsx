@@ -1,5 +1,6 @@
 "use client";
 
+import { ROUTES } from "@/src/lib/routes";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,7 +35,7 @@ const HeroSection = () => {
         </p>
 
         {/* get started button  */}
-        <Link href={"/register"}>
+        <Link href={ROUTES.auth.register}>
           <button className="bg-brand text-background-primary p-4 w-75 mb-12 rounded-lg shadow-blue-300 shadow-lg cursor-pointer transition-all hover:opacity-80">
             Get Started
           </button>

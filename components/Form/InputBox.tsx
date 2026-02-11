@@ -14,10 +14,10 @@ const InputBox = ({ title, type, icon, placeholder, name }: props) => {
       <label htmlFor={title} className="text-sm mb-1 md:text-base font-medium">
         {title}
       </label>
-      <div className="border  text-text-secondary gap-2 flex items-center p-2 rounded bg-gray-100">
+      <div className="border text-text-secondary gap-2 flex items-center p-2 rounded bg-gray-100">
         <label htmlFor={title}>{icon}</label>
         <input
-          className="outline-0 text-xs md:text-sm"
+          className="outline-0 text-xs md:text-sm w-full bg-transparent"
           type={type}
           id={title}
           placeholder={placeholder}

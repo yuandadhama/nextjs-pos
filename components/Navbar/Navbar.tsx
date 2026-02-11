@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import LoginButton from "./LoginButton";
 import HamburgerMenu from "./HamburgerMenu";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Menu from "./Menu";
 import { AnimatePresence } from "motion/react";
 import {
@@ -11,6 +10,10 @@ import {
   GlobeAltIcon,
   HomeIcon,
 } from "@heroicons/react/16/solid";
+
+import DirectButton from "./DirectButton";
+import { ROUTES } from "@/src/lib/routes";
+import { useAuthContext } from "@/src/context/AuthContext";
 
 const menus = [
   { title: "home", href: "home", icon: <HomeIcon width={20} /> },
@@ -20,6 +23,8 @@ const menus = [
 
 const Navbar = () => {
   const [openMenuNav, setOpenMenuNav] = useState(false);
+
+  const user = useAuthContext();
 
   const clickingMenuHandle = () => {
     setOpenMenuNav((prevState) => !prevState);
@@ -65,7 +70,11 @@ const Navbar = () => {
 
         {/* login button and navbar  */}
         <div className="flex items-center gap-5">
-          <LoginButton />
+          {!user ? (
+            <DirectButton href={ROUTES.auth.login} text="Login" />
+          ) : (
+            <DirectButton href={ROUTES.dashboard.root} text="Dashboard" />
+          )}
           <HamburgerMenu clickingMenuHandle={clickingMenuHandle} />
         </div>
         <AnimatePresence>
