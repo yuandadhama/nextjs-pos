@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Menu from "./Menu";
 import { AnimatePresence } from "motion/react";
 import {
@@ -13,7 +13,7 @@ import {
 
 import DirectButton from "./DirectButton";
 import { ROUTES } from "@/src/lib/routes";
-import { useAuthContext } from "@/src/context/AuthContext";
+import { auth } from "@/src/lib/auth";
 
 const menus = [
   { title: "home", href: "home", icon: <HomeIcon width={20} /> },
@@ -21,10 +21,10 @@ const menus = [
   { title: "about", href: "about", icon: <GlobeAltIcon width={20} /> },
 ];
 
-const Navbar = () => {
-  const [openMenuNav, setOpenMenuNav] = useState(false);
+type Session = typeof auth.$Infer.Session;
 
-  const user = useAuthContext();
+const Navbar = ({ session }: { session: Session | null }) => {
+  const [openMenuNav, setOpenMenuNav] = useState(false);
 
   const clickingMenuHandle = () => {
     setOpenMenuNav((prevState) => !prevState);
@@ -70,7 +70,7 @@ const Navbar = () => {
 
         {/* login button and navbar  */}
         <div className="flex items-center gap-5">
-          {!user ? (
+          {!session ? (
             <DirectButton href={ROUTES.auth.login} text="Login" />
           ) : (
             <DirectButton href={ROUTES.dashboard.root} text="Dashboard" />

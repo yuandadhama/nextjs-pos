@@ -1,7 +1,6 @@
 import Footer from "@/components/HomePage/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 
-import { AuthProvider } from "@/src/context/AuthContext";
 import { getSession } from "@/src/lib/actions/auth-actions";
 
 const layout = async ({
@@ -10,13 +9,11 @@ const layout = async ({
   const session = await getSession();
 
   return (
-    <AuthProvider value={session?.user}>
-      <main>
-        <Navbar />
-        {children}
-        <Footer />
-      </main>
-    </AuthProvider>
+    <main>
+      <Navbar session={session} />
+      {children}
+      <Footer />
+    </main>
   );
 };
 
