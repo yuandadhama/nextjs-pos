@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
+import { getSession } from "@/src/lib/actions/auth-actions";
+import { redirect } from "next/navigation";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
     "The all-in-one solution for modern retail and high-speed hospitality",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

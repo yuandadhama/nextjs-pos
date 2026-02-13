@@ -2,17 +2,28 @@
 
 import { headers } from "next/headers";
 import { auth } from "../auth";
+import { APIError } from "better-auth";
 
 export const signUp = async (email: string, password: string, name: string) => {
-  const result = await auth.api.signUpEmail({
-    body: {
-      email,
-      password,
-      name,
-    },
-  });
-
-  return result;
+  try {
+    const result = await auth.api.signUpEmail({
+      body: {
+        email,
+        password,
+        name,
+      },
+    });
+    return result;
+  } catch (err) {
+    if (err instanceof APIError) {
+      console.log("error value: " + err.status);
+      if (err.status == 400) {
+        throw new Error("Invalid Email");
+      }
+      throw new Error(err.message);
+    }
+    throw new Error("Unknown Error");
+  }
 };
 
 export const signIn = async (email: string, password: string) => {
@@ -24,6 +35,23 @@ export const signIn = async (email: string, password: string) => {
   });
 
   return result;
+};
+
+export const signInSocial = async (provider: "google") => {
+  try {
+    const { url } = await auth.api.signInSocial({
+      body: {
+        provider,
+        callbackURL: "/dashboard",
+      },
+    });
+    if (url) {
+      return url;
+    }
+  } catch (err) {
+    console.error(err);
+    throw new Error("Something went wrong");
+  }
 };
 
 export const signOut = async () => {

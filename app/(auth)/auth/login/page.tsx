@@ -1,10 +1,17 @@
 import LoginForm from "@/components/Login/LoginForm";
 import SignInGoogle from "@/components/Login/SignInGoogle";
+import { getSession } from "@/src/lib/actions/auth-actions";
 import { ROUTES } from "@/src/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-const page = () => {
+const page = async () => {
+  const session = await getSession();
+  if (!!session) {
+    redirect("/dashboard");
+  }
+
   return (
     <div className="flex items-center py-10 gap-10 h-auto flex-col px-7 md:px-10">
       {/* logo and brand to link home  */}

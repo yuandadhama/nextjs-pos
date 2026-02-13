@@ -6,8 +6,10 @@ import InputBox from "../Form/InputBox";
 import { useState } from "react";
 import Loader from "../UI/Loader";
 import { signIn } from "@/src/lib/actions/auth-actions";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const router = useRouter();
   const [error, setError] = useState<String | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -24,6 +26,8 @@ const LoginForm = () => {
       const result = await signIn(email, password);
       if (!result.user) {
         setError("Invalid email or password");
+      } else {
+        router.push("/dashboard");
       }
     } catch (err) {
       setError(`${err instanceof Error ? err.message : "Unknown error"}`);

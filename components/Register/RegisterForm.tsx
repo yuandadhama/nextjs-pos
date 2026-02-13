@@ -33,13 +33,13 @@ const RegisterForm = () => {
 
       const result = await signUp(email, password, name);
 
-      if (!result.user) {
+      if (!result) {
         setError("Failed to create account");
+      } else {
+        router.push(ROUTES.dashboard.root);
       }
-
-      router.push(ROUTES.dashboard.root);
     } catch (err) {
-      setError(`${err instanceof Error ? err.message : "Unknown error"}`);
+      setError(`${err instanceof Error ? err.message : "Unexpected error"}`);
     } finally {
       setLoading(false);
     }

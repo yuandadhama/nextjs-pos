@@ -2,11 +2,15 @@ import Footer from "@/components/HomePage/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 
 import { getSession } from "@/src/lib/actions/auth-actions";
+import { redirect } from "next/navigation";
 
 const layout = async ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
   const session = await getSession();
+  if (!!session) {
+    redirect("/dashboard");
+  }
 
   return (
     <main>

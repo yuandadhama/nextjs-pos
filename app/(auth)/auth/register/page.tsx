@@ -1,12 +1,20 @@
 import RegisterForm from "@/components/Register/RegisterForm";
-import SignUpGoogle from "@/components/Register/SignUpGoogle";
+
 import { ROUTES } from "@/src/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
 
 import logo from "@/public/header/logo.png";
+import { getSession } from "@/src/lib/actions/auth-actions";
+import { redirect } from "next/navigation";
+import SignInGoogle from "@/components/Login/SignInGoogle";
 
-const page = () => {
+const page = async () => {
+  const session = await getSession();
+  if (!!session) {
+    redirect("/dashboard");
+  }
+
   return (
     <div className="flex items-center py-10 gap-10 h-auto flex-col px-7 md:px-10">
       {/* logo and brand to link home  */}
@@ -26,7 +34,7 @@ const page = () => {
         </p>
 
         {/* sign up with google button  */}
-        <SignUpGoogle />
+        <SignInGoogle />
 
         {/* register form input  */}
         <RegisterForm />
