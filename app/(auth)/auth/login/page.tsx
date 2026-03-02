@@ -1,5 +1,9 @@
 import LoginForm from "@/components/Login/LoginForm";
+
 import SignInGoogle from "@/components/Login/SignInGoogle";
+import PopUp from "@/components/UI/PopUp";
+import { readCookie } from "@/src/lib/actions/action";
+
 import { getSession } from "@/src/lib/actions/auth-actions";
 import { ROUTES } from "@/src/lib/routes";
 import Image from "next/image";
@@ -12,8 +16,14 @@ const page = async () => {
     redirect("/dashboard");
   }
 
+  const userSuccessRegister = await readCookie("success-register");
+  console.log("isi cookie: " + userSuccessRegister);
+  const isUserSuccessRegister = !!userSuccessRegister;
+
   return (
     <div className="flex items-center py-10 gap-10 h-auto flex-col px-7 md:px-10">
+      {isUserSuccessRegister && <PopUp />}
+
       {/* logo and brand to link home  */}
       <Link href={ROUTES.root} className="flex items-center gap-3">
         <Image

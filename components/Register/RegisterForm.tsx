@@ -9,6 +9,7 @@ import Loader from "../UI/Loader";
 import { signUp } from "@/src/lib/actions/auth-actions";
 import { ROUTES } from "@/src/lib/routes";
 import { useRouter } from "next/navigation";
+import { setCookieByKey } from "@/src/lib/actions/action";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -36,7 +37,8 @@ const RegisterForm = () => {
       if (!result) {
         setError("Failed to create account");
       } else {
-        router.push(ROUTES.dashboard.root);
+        await setCookieByKey("success-register", "true");
+        router.push(ROUTES.auth.login);
       }
     } catch (err) {
       setError(`${err instanceof Error ? err.message : "Unexpected error"}`);

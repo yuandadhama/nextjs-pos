@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
-import { getSession } from "@/src/lib/actions/auth-actions";
-import { redirect } from "next/navigation";
 
 const lexend = Lexend({
   variable: "--font-lexend",
